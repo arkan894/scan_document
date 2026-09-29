@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DocumentController::class, 'create'])->name('documents.create');
 
 Route::resource('documents', DocumentController::class)->only([
-    'index', 'create', 'store', 'show'
+    'index', 'store', 'show'
 ]);
